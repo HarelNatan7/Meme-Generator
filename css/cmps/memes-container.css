@@ -1,0 +1,9 @@
+/* Mems Container */
+
+.memes-container {
+    width: 90vw;
+    margin: 0 auto 25px;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 2vh;
+}

@@ -1,0 +1,13 @@
+/* Memes Images */
+
+.meme-img {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.meme-img:hover {
+    opacity: 0.7;
+}
