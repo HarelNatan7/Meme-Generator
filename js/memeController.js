@@ -13,8 +13,11 @@ function onInIt() {
     })
 }
 
-function renderImg(img) {
+function renderImg() {
     // Draw the img on the canvas
+    const currImg = getImg()
+    const img = new Image()
+    img.src = currImg.url
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
@@ -37,20 +40,19 @@ function resizeCanvas() {
 
 function onSelectMeme(selectedMeme) {
     // document.querySelector('.memes-container').classList.add('none')
-    let meme = getMeme(selectedMeme)
-    console.log('meme:', meme)
-    renderMeme(meme)
+    setImg(selectedMeme)
+    renderMeme()
     }
 
-function renderMeme(meme) {
-    const imgId = meme.selectedImgId
-    console.log('imgId:', imgId)
-    const img = getImg(imgId)
-    console.log('img:', img)
-    renderImg(img.url)
-    drawText('Hello', (gElCanvas.width/2), 40)
+function renderMeme() {
+    let meme = getMeme()
+    let currLine = meme.selectedLineIdx
+    renderImg()
+    drawText(meme.lines[currLine].txt, (gElCanvas.width/2), 40)
 }
 
 function setLineTxt(val) {
-    console.log('val:', val)
+    let text = document.querySelector('.text-input').value
+    gMeme.lines[0].txt = text
+    renderMeme()
 }

@@ -10,45 +10,32 @@ let gImgs = [
 ]
 
 let gMeme = {
-    // selectedImgId: 5,
-    // selectedLineIdx: 0,
-    // lines: [
-    //         {
-    //                 txt: 'I sometimes eat Falafel',
-    //                 size: 20,
-    //                 align: 'left',
-    //                 color: 'red'
-    //             }
-    //         ]
+    selectedImgId: 0,
+    selectedLineIdx: 0,
+    lines: [
+            {
+                    txt: 'Write Here',
+                    size: 20,
+                    align: 'center',
+                    color: 'white'
+                }
+            ]
 }
 
-function getMeme(id) {
-    let meme = {
-        selectedImgId: id,
-        // selectedLineIdx: id,
-        // lines: [
-        //     {
-        //         txt: 'I sometimes eat Falafel',
-        //         size: 20,
-        //         align: 'left',
-        //         color: 'red'
-        //     }
-        // ]
-    }
-    return meme
+function setImg(selectedMeme) {
+    gMeme.selectedImgId = selectedMeme
+}
+
+function getMeme() {
+    return gMeme
 }
 
 function getImgs() {
     return gImgs
 }
 
-function getImg(imgId) {
-    console.log('imgId:', +imgId)
-    imgId = +imgId
-    // console.log(gImgs[0].id);
-    const image = gImgs.find(img => imgId === img.id)
-    console.log('img:', img)
-    return image
+function getImg() {
+    return gImgs.find(img => gMeme.selectedImgId === img.id)
 }
 
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }

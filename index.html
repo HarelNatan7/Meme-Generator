@@ -15,16 +15,16 @@
         <section class="memes-container flex"></section>
     </section>
 
-    <section class="editor">
-        <div class="edit-panel-container">
-            <input type="text" onchange="setLineTxt(this.value)">
-        </div>
+    <section class="editor flex">
         <div class="canvas-container">
             <h3>Canvas Container</h3>
             <canvas id="my-canvas" height="700" width="1077"></canvas>
         </div>
+        <div class="edit-panel-container">
+            <label>Line: </label>
+            <input class="text-input" type="text" placeholder="PlaceHolder" oninput="setLineTxt()">
+        </div>
     </section>
-
     <script src="js/memeService.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
