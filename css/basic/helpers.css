@@ -4,6 +4,25 @@
     display: flex;
 }
 
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+.space-around {
+    justify-content: space-around;
+}
+
 .none {
     display: none;
 }

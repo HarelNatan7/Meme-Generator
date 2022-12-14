@@ -1,0 +1,54 @@
+/* Editor */
+
+.editor {
+    padding: 2.5rem;
+}
+
+.edit-panel-container {
+    height: 50vh;
+    background-color: #ebeef3;
+    border-radius: 1.7rem;
+}
+
+.text-input {
+    border-radius: 3rem;
+    height: 2.5rem;
+}
+
+.text-editor {
+    background-color: #19a59f;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+.editor button {
+    /* margin: 5px; */
+    /* padding: 0.5rem; */
+    border: 0;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.editor label {
+    margin: 5px;
+    border: 0;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.switch-btn {
+    background-color: #19a59f;
+}
+
+.sticker-container {
+    background-color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.9rem;
+}
+
+.sticker-container img {
+    height: 4rem;
+    width: 4rem;
+}

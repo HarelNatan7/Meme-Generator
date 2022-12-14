@@ -1,6 +1,19 @@
 /* Header */
 
 .page-header {
-    background-color: aquamarine;
-    padding: 2vh;
+    height: 15vh;
+    border-radius: 50px;
+    top: 0;
+    color: wheat;
+    width: 100%;
+    padding: 0 2rem;
+    background: linear-gradient(0.25turn, #4f89c0, #37a870);
+}
+.logo {
+    height: 2rem;
+    width: 10rem;
+}
+.nav-bar {
+    gap: 3rem;
+    text-decoration: none;
 }

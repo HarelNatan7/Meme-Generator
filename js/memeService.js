@@ -14,7 +14,7 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
             {
-                    txt: 'Write Here',
+                    txt: 'PlaceHolder',
                     size: 20,
                     align: 'center',
                     color: 'white'

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,20 +10,83 @@
 </head>
 
 <body onload="onInIt()">
+    <header class="page-header flex align-center space-between">
+        <img class="logo" src="LOGO/LOGO.png" alt="">
+        <ul class="nav-bar flex">
+            <li><a href="index.html">Gallery</a></li>
+            <li><a href="myMemes.html">Memes</a></li>
+            <li><a href="about.html">About</a></li>
+            <li>
+                <select class="leng" onchange="onSetLang(this.value)">
+                    <option class="en" value="en">English</option>
+                    <option class="he" value="he">עברית</option>
+                </select>
+            </li>
+        </ul>
+    </header>
     <section class="gallery">
-        <header class="page-header">Page Header</header>
         <nav class="filters">Filters Container</nav>
         <section class="memes-container flex"></section>
     </section>
 
-    <section class="editor flex">
+    <section class="editor flex row align-center space-around">
         <div class="canvas-container">
-            <h3>Canvas Container</h3>
             <canvas id="my-canvas" height="700" width="1077"></canvas>
         </div>
-        <div class="edit-panel-container">
-            <label>Line: </label>
+        <div class="edit-panel-container flex column space-between">
             <input class="text-input" type="text" placeholder="PlaceHolder" oninput="setLineTxt()">
+            <div class="row-selector">
+                <button class="switch-btn">
+                    <img src="Icons/arrowUp.png">
+                    <img src="Icons/arrowDown.png">
+                </button>
+                <button>
+                    <img src="Icons/+.png">
+                </button>
+                <button>
+                    <img src="Icons/delete.png">
+                </button>
+            </div>
+            <div class="text-editor">
+                <button class="">
+                    <img src="Icons/A+.png">
+                </button>
+                <button class="">
+                    <img src="Icons/A-.png">
+                </button>
+                <button class="">
+                    <img src="Icons/left.png">
+                </button>
+                <button class="">
+                    <img src="Icons/center.png">
+                </button>
+                <button class="">
+                    <img src="Icons/right.png">
+                </button>
+                <br>
+                <select name="font" id="font">
+                    <option value="impact">Impact</option>
+                    <option value="arial">Arial</option>
+                </select>
+                <label>
+                    <img src="Icons/stroke.png">
+                    <input type="color" style="display:none;">
+                </label>
+                <label>
+                    <img src="Icons/colorPicker.png">
+                    <input type="color" style="display:none;">
+                </label>
+            </div>
+            <div class="sticker-container">
+                <img src="Stickers/angry.png">
+                <img src="Stickers/happy.png">
+                <img src="Stickers/shok.png">
+                <img src="Stickers/lazy.png">
+            </div>
+            <div class="share-and-dwn-container">
+                <button>Share</button>
+                <button>Download</button>
+            </div>
         </div>
     </section>
     <script src="js/memeService.js"></script>

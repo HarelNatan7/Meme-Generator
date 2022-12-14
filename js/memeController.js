@@ -25,7 +25,7 @@ function drawText(text, x, y) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
-    gCtx.font = "50px arial";
+    gCtx.font = "50px impact";
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
@@ -34,12 +34,12 @@ function drawText(text, x, y) {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth - 70
-    gElCanvas.height = elContainer.offsetHeight - 70
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
 }
 
 function onSelectMeme(selectedMeme) {
-    // document.querySelector('.memes-container').classList.add('none')
+    document.querySelector('.gallery').classList.add('none')
     setImg(selectedMeme)
     renderMeme()
     }

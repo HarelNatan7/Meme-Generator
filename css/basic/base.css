@@ -5,7 +5,30 @@
     text-align: center;
 }
 
+body {
+    font-family: poppins;
+    background-color: #22252c;
+}
+
 canvas {
     margin: 0 1.5rem;
     background-color: antiquewhite;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: .2s;
+}
+
+a:hover {
+    color: green;
+    background-color: wheat;
+    padding: 0.7rem;
+    border: 1px solid green;
+    border-radius: 1.7rem;
 }
