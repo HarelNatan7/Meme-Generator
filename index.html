@@ -34,9 +34,9 @@
             <canvas id="my-canvas" height="700" width="1077"></canvas>
         </div>
         <div class="edit-panel-container flex column space-between">
-            <input class="text-input" type="text" placeholder="PlaceHolder" oninput="setLineTxt()">
+            <input class="text-input" type="text" placeholder="PlaceHolder" oninput="setLineTxt(this.value)">
             <div class="row-selector">
-                <button class="switch-btn">
+                <button class="switch-btn" onclick="onSwitchLine()">
                     <img src="Icons/twoArrows.png">
                 </button>
                 <button class="add-btn" onclick="onAddLine()">

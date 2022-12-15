@@ -1,11 +1,12 @@
 'use strict'
 
+let gMeme
 let gCurrFontColor = 'white'
 let gCurrStrokeColor = 'black'
 let gCurrFontFamily = 'impact'
-let gCurrFontSize = 70
+let gCurrFontSize = 50
 
-let gImgs = [
+const gImgs = [
     { id: 1, url: 'meme-imgs/1.jpg', keywords: ['trump', 'angry'] },
     { id: 2, url: 'meme-imgs/2.jpg', keywords: ['cute', 'dogs', 'pets'] },
     { id: 3, url: 'meme-imgs/3.jpg', keywords: ['baby', 'cute', 'dogs', 'pets'] },
@@ -26,17 +27,35 @@ let gImgs = [
     { id: 18, url: 'meme-imgs/18.jpg', keywords: ['smart', 'explain', 'history'] }
 ]
 
-let gMeme = {
-    selectedImgId: 0,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'PlaceHolder',
-            size: 70,
-            align: 'center',
-            color: 'white'
-        }
-    ]
+function createMeme(img) {
+    let elCanvas = getElCanvas()
+    gMeme = {
+        selectedImgId: img.id,
+        img,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'PlaceHolder',
+                size: gCurrFontSize,
+                align: 'center',
+                color: 'white',
+                stroke: gCurrStrokeColor,
+                family: gCurrFontFamily,
+                x: elCanvas.width / 2,
+                y: 40,
+                rectSize: {
+                    pos: { x: 0, y: 50 - gCurrFontSize },
+                    height: 70,
+                    width: elCanvas.width - 40
+                },
+            }
+        ]
+    }
+}
+
+function setLineTxt(text) {
+    gMeme.lines[gMeme.selectedLineIdx].text = text;
+    drawText(gMeme.selectedLineIdx);
 }
 
 function addLine() {
@@ -49,8 +68,8 @@ function addLine() {
     })
 }
 
-function setImg(selectedMeme) {
-    gMeme.selectedImgId = selectedMeme
+function setImg(img) {
+    gMeme.selectedImgId = img.id
 }
 
 function getMeme() {
