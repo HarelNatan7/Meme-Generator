@@ -1,4 +1,5 @@
 'use strict'
+
 let gElCanvas
 let gCtx
 
@@ -13,8 +14,20 @@ function onInIt() {
     })
 }
 
+function onSelectMeme(selectedMeme) {
+    document.querySelector('.gallery').classList.add('none')
+    setImg(selectedMeme)
+    renderMeme()
+}
+
+function renderMeme() {
+    let meme = getMeme()
+    let currLine = meme.selectedLineIdx
+    renderImg()
+    drawText(meme.lines[currLine].txt, (gElCanvas.width / 2), 40)
+}
+
 function renderImg() {
-    // Draw the img on the canvas
     const currImg = getImg()
     const img = new Image()
     img.src = currImg.url
@@ -22,37 +35,54 @@ function renderImg() {
 }
 
 function drawText(text, x, y) {
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    gCtx.font = "50px impact";
+    gCtx.lineWidth = 3
+    gCtx.strokeStyle = gCurrStrokeColor
+    gCtx.fillStyle = gCurrFontColor
+    gCtx.font = "70px impact" // `${fontSize}px ${fontFamily}` ;
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
 
+function onAddLine() {
+    addLine()
+    let meme = getMeme()
+    let currLine = meme.selectedLineIdx
+    drawText(meme.lines[currLine].txt, (gElCanvas.width / 2), gElCanvas.height - 40)
+}
+
+function setLineTxt() {
+    let meme = getMeme()
+    let currLine = meme.selectedLineIdx
+    console.log('currLine:', currLine)
+    let text = document.querySelector('.text-input').value
+    gMeme.lines[currLine].txt = text
+    renderMeme()
+}
+
+function onSetFontColor(val) {
+    setFontColor(val)
+    renderMeme()
+}
+
+function onSetStrokeColor(val) {
+    setStrokeColor(val)
+    renderMeme()
+}
+
+function onIncreaseFont() {
+    increaseFont()
+    renderMeme()
+}
+
+function onDecreaseFont() {
+    decreaseFont()
+    renderMeme()
+}
+
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
-}
-
-function onSelectMeme(selectedMeme) {
-    document.querySelector('.gallery').classList.add('none')
-    setImg(selectedMeme)
-    renderMeme()
-    }
-
-function renderMeme() {
-    let meme = getMeme()
-    let currLine = meme.selectedLineIdx
-    renderImg()
-    drawText(meme.lines[currLine].txt, (gElCanvas.width/2), 40)
-}
-
-function setLineTxt(val) {
-    let text = document.querySelector('.text-input').value
-    gMeme.lines[0].txt = text
-    renderMeme()
 }

@@ -2,12 +2,15 @@
 
 .editor {
     padding: 2.5rem;
+    flex-wrap: wrap;
 }
 
 .edit-panel-container {
     height: 50vh;
-    background-color: #ebeef3;
+    padding: 1rem;
+    background-color: rgba(78, 81, 84, 0.53);
     border-radius: 1.7rem;
+
 }
 
 .text-input {
@@ -22,23 +25,63 @@
 }
 
 .editor button {
+    min-height: 51px;
+    min-width: 55px;
     margin: 0.5rem;
     padding: 0.5rem;
     border: 0;
     border-radius: 0.7rem;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: .3s;
 }
 
 .editor label {
+    display: inline-block;
     margin: 0.5rem;
     padding: 0.5rem;
     border: 0;
+    background-color: #fff;
     border-radius: 0.7rem;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.editor label:hover {
+    opacity: 0.8;
+}
+
+.row-selector button:hover {
+    opacity: 0.8;
+}
+
+.row-selector button {
+    min-height: 55px;
+    min-width: 55px;
 }
 
 .switch-btn {
-    background-color: #19a59f;
+    background-image: url('/Icons/blue.png');
+}
+
+.add-btn {
+    background-image: url('/Icons/green.png');
+}
+
+.delete-btn {
+    background-image: url('/Icons/red.png');
+}
+
+#font {
+    width: 219px;
+    height: 53px;
+    font-size: 1.7rem;
+    font-family: semiBold-poppins;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 
 .sticker-container {
@@ -50,4 +93,9 @@
 .sticker-container img {
     height: 4rem;
     width: 4rem;
+    cursor: pointer;
+}
+
+.sticker-container img:hover {
+    opacity: 0.7;
 }

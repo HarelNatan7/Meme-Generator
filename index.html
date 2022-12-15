@@ -37,45 +37,47 @@
             <input class="text-input" type="text" placeholder="PlaceHolder" oninput="setLineTxt()">
             <div class="row-selector">
                 <button class="switch-btn">
-                    <img src="Icons/arrowUp.png">
-                    <img src="Icons/arrowDown.png">
+                    <img src="Icons/twoArrows.png">
                 </button>
-                <button>
+                <button class="add-btn" onclick="onAddLine()">
                     <img src="Icons/+.png">
                 </button>
-                <button>
+                <button class="delete-btn">
                     <img src="Icons/delete.png">
                 </button>
             </div>
             <div class="text-editor">
-                <button class="">
-                    <img src="Icons/A+.png">
-                </button>
-                <button class="">
-                    <img src="Icons/A-.png">
-                </button>
-                <button class="">
-                    <img src="Icons/left.png">
-                </button>
-                <button class="">
-                    <img src="Icons/center.png">
-                </button>
-                <button class="">
-                    <img src="Icons/right.png">
-                </button>
-                <br>
-                <select name="font" id="font">
-                    <option value="impact">Impact</option>
-                    <option value="arial">Arial</option>
-                </select>
-                <label>
-                    <img src="Icons/stroke.png">
-                    <input type="color" style="display:none;">
-                </label>
-                <label>
-                    <img src="Icons/colorPicker.png">
-                    <input type="color" style="display:none;">
-                </label>
+                <div class="text-btn-container">
+                    <button class="" onclick="onIncreaseFont()">
+                        <img src="Icons/A+.png">
+                    </button>
+                    <button class="" onclick="onDecreaseFont()">
+                        <img src="Icons/A-.png">
+                    </button>
+                    <button class="">
+                        <img src="Icons/left.png">
+                    </button>
+                    <button class="">
+                        <img src="Icons/center.png">
+                    </button>
+                    <button class="">
+                        <img src="Icons/right.png">
+                    </button>
+                </div>
+                <div class="text-inputs-container">
+                    <select name="font" id="font">
+                        <option value="impact">Impact</option>
+                        <option value="arial">Arial</option>
+                    </select>
+                    <label>
+                        <img src="Icons/stroke.png">
+                        <input type="color" oninput="onSetStrokeColor(this.value)" style="display:none;">
+                    </label>
+                    <label>
+                        <img src="Icons/colorPicker.png">
+                        <input type="color" oninput="onSetFontColor(this.value)" style="display:none;">
+                    </label>
+                </div>
             </div>
             <div class="sticker-container">
                 <img src="Stickers/angry.png">
