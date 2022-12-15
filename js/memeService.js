@@ -46,7 +46,7 @@ function createMeme(img) {
                 x: elCanvas.width / 2,
                 y: 40,
                 rectSize: {
-                    pos: { x: 0, y: 50 - gCurrFontSize },
+                    pos: { x: 0, y: 55 - gCurrFontSize },
                     height: 65,
                     width: elCanvas.width - 40
                 },
@@ -64,7 +64,7 @@ function addLine(isLines) {
     if (isLines) gIdLine = 0
     if (gMeme.lines.length === 1 && gMeme.lines[0].text === '') return
     let elCanvas = getElCanvas()
-    let lineHeight = (gMeme.lines.length === 1) ? elCanvas.height - 20 : elCanvas.height / 2
+    let lineHeight = (gMeme.lines.length === 1) ? elCanvas.height - 40 : elCanvas.height / 2
     if (gMeme.lines.length === 0) lineHeight = 50
     gMeme.lines.push({
         id: gIdLine++,
@@ -77,15 +77,13 @@ function addLine(isLines) {
         x: elCanvas.width / 2,
         y: lineHeight,
         rectSize: {
-            pos: { x: 0, y: lineHeight - gCurrFontSize },
+            pos: { x: 0, y: (lineHeight + 15) - gCurrFontSize},
             height: 65,
             width: elCanvas.width - 40
         }
     })
     if (!isLines) gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
-
-
 
 function changeLinesId(meme) {
     meme.lines.forEach((line, idx) => line.id = idx)

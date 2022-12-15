@@ -2,6 +2,7 @@
 
 let gElCanvas
 let gCtx
+let gStartPos
 let isDrag = false
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
@@ -22,15 +23,35 @@ function addListeners() {
 }
 
 function addMouseListeners() {
+    gElCanvas.addEventListener('click', onClick)
     gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseenter', onHover)
+    gElCanvas.addEventListener('mouseleave', onLeave)
     gElCanvas.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
+    gElCanvas.addEventListener('touch', onClick)
     gElCanvas.addEventListener('touchmove', onMove)
     gElCanvas.addEventListener('touchstart', onDown)
     gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onClick(ev) {
+    var meme = getMeme()
+    if (meme.lines.length === 1 && meme.lines[0].txt === '') return
+    var lineClick = isLineClicked(ev)
+    if (lineClick) {
+        const idxLine = meme.lines.findIndex(line => line === lineClick)
+        if (lineClick.txt === 'PlaceHolder' && lineClick.id === 0) {
+            document.querySelector('.text-input').value = '';
+        } else document.querySelector('.text-input').value = lineClick.txt
+        renderCanvas()
+        drawRect(lineClick)
+        meme.selectedLineIdx = idxLine
+        console.log('idxLine:', idxLine)
+    } else renderCanvas()
 }
 
 function isLineClicked(ev) {
@@ -49,27 +70,46 @@ function isLineClicked(ev) {
     )
 }
 
+function onHover() {
+    gElCanvas.style.cursor = 'grab'
+}
+function onLeave() {
+    gElCanvas.style.cursor = 'default'
+}
+
 function onDown(ev) {
-    console.log('Down')
     if (!isLineClicked(ev)) return
     isDrag = true
-    gElCanvas.style.cursor = 'grab'
+    gElCanvas.style.cursor = 'grabbing'
+    const pos = getEvPos(ev)
+    gStartPos = pos
 }
 
 function onMove(ev) {
-    // console.log('Move')
     if (!isDrag) return
     let meme = getMeme()
-    let currLine = meme.selectedLineIdx
+    let currLine = meme.lines[meme.selectedLineIdx]
     const pos = getEvPos(ev)
-    const x = pos.x
-    const y = pos.y
-    drawText(meme.lines[currLine].txt, x, y)
+    // Calc the delta , the diff we moved
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy, currLine)
+    // Save the last pos , we remember where we`ve been and move accordingly
+    gStartPos = pos
+    // The canvas is render again after every move
+    renderCanvas()
 }
 
 function onUp() {
-    console.log('Up');
     isDrag = false
+    gElCanvas.style.cursor = 'default'
+}
+
+function moveLine(dx, dy, line) {
+    line.x += dx
+    line.y += dy
+    line.rectSize.pos.x += dx
+    line.rectSize.pos.y += dy
 }
 
 function getEvPos(ev) {
@@ -130,10 +170,10 @@ function drawRect(currLine) {
     var width = gElCanvas.width
     var height = currLine.size
     gCtx.beginPath()
-    gCtx.rect(x, y, width, height + 22)
-    gCtx.fillStyle = '#aab7b87d'
-    gCtx.fillRect(x, y, width, height + 22)
-    gCtx.strokeStyle = 'gray';
+    gCtx.rect(x, y, width, height + 10)
+    gCtx.fillStyle = '#c4d1da6a'
+    gCtx.strokeStyle = 'lightgray'
+    gCtx.fillRect(x, y, width, height + 10)
     gCtx.stroke()
 
 }
@@ -185,7 +225,6 @@ function onDeleteLine() {
         renderCanvas()
     }
 }
-
 
 function onAddLine() {
     document.querySelector('.text-input').value = ''
