@@ -5,6 +5,7 @@ let gCurrFontColor = 'white'
 let gCurrStrokeColor = 'black'
 let gCurrFontFamily = 'impact'
 let gCurrFontSize = 50
+let gIdLine = 0
 
 const gImgs = [
     { id: 1, url: 'meme-imgs/1.jpg', keywords: ['trump', 'angry'] },
@@ -35,17 +36,18 @@ function createMeme(img) {
         selectedLineIdx: 0,
         lines: [
             {
+                id: gIdLine++,
                 txt: 'PlaceHolder',
                 size: gCurrFontSize,
                 align: 'center',
-                color: 'white',
+                color: gCurrFontColor,
                 stroke: gCurrStrokeColor,
                 family: gCurrFontFamily,
                 x: elCanvas.width / 2,
                 y: 40,
                 rectSize: {
                     pos: { x: 0, y: 50 - gCurrFontSize },
-                    height: 70,
+                    height: 65,
                     width: elCanvas.width - 40
                 },
             }
@@ -54,22 +56,40 @@ function createMeme(img) {
 }
 
 function setLineTxt(text) {
-    gMeme.lines[gMeme.selectedLineIdx].text = text;
-    drawText(gMeme.selectedLineIdx);
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
+    drawText(gMeme.selectedLineIdx)
 }
 
-function addLine() {
-    gMeme.selectedLineIdx++
+function addLine(isLines) {
+    if (isLines) gIdLine = 0
+    if (gMeme.lines.length === 1 && gMeme.lines[0].text === '') return
+    let elCanvas = getElCanvas()
+    let lineHeight = (gMeme.lines.length === 1) ? elCanvas.height - 20 : elCanvas.height / 2
+    if (gMeme.lines.length === 0) lineHeight = 50
     gMeme.lines.push({
-        txt: 'New Line',
-        size: 70,
+        id: gIdLine++,
+        txt: '',
+        size: gCurrFontSize,
         align: 'center',
-        color: 'white'
+        color: gCurrFontColor,
+        stroke: gCurrStrokeColor,
+        family: gCurrFontFamily,
+        x: elCanvas.width / 2,
+        y: lineHeight,
+        rectSize: {
+            pos: { x: 0, y: lineHeight - gCurrFontSize },
+            height: 65,
+            width: elCanvas.width - 40
+        }
     })
+    if (!isLines) gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
-function setImg(img) {
-    gMeme.selectedImgId = img.id
+
+
+function changeLinesId(meme) {
+    meme.lines.forEach((line, idx) => line.id = idx)
+    gIdLine = gMeme.lines.length
 }
 
 function getMeme() {
@@ -86,18 +106,49 @@ function getImg() {
 
 function setFontColor(val) {
     gCurrFontColor = val
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.color = gCurrFontColor
 }
 
 function setStrokeColor(val) {
     gCurrStrokeColor = val
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.stroke = gCurrStrokeColor
 }
 
-function increaseFont() {
-
+function increaseFont(val) {
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.size += val
 }
 
-function decreaseFont() {
+function decreaseFont(val) {
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.size += val
+}
 
+function setFamily(val) {
+    gCurrFontFamily = val
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.family = gCurrFontFamily
+}
+
+function setAlign(val) {
+    let elCanvas = getElCanvas()
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    switch (val) {
+        case 'left':
+            currLine.align = val
+            currLine.x = 50
+            break
+        case 'center':
+            currLine.align = val
+            currLine.x = elCanvas.width / 2
+            break
+        case 'right':
+            currLine.align = val
+            currLine.x = elCanvas.width - 50
+            break
+    }
 }
 
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }

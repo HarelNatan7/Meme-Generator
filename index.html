@@ -42,32 +42,35 @@
                 <button class="add-btn" onclick="onAddLine()">
                     <img src="Icons/+.png">
                 </button>
-                <button class="delete-btn">
+                <button class="delete-btn" onclick="onDeleteLine()">
                     <img src="Icons/delete.png">
                 </button>
             </div>
             <div class="text-editor">
                 <div class="text-btn-container">
-                    <button class="" onclick="onIncreaseFont()">
+                    <button class="" onclick="onIncreaseFont(+5)">
                         <img src="Icons/A+.png">
                     </button>
-                    <button class="" onclick="onDecreaseFont()">
+                    <button class="" onclick="onDecreaseFont(-5)">
                         <img src="Icons/A-.png">
                     </button>
-                    <button class="">
+                    <button id="left" onclick="onSetAlign(this.id)">
                         <img src="Icons/left.png">
                     </button>
-                    <button class="">
+                    <button id="center" onclick="onSetAlign(this.id)">
                         <img src="Icons/center.png">
                     </button>
-                    <button class="">
+                    <button id="right" onclick="onSetAlign(this.id)">
                         <img src="Icons/right.png">
                     </button>
                 </div>
                 <div class="text-inputs-container">
-                    <select name="font" id="font">
+                    <select name="font" id="font" onchange="onSetFamily(this.value)">
                         <option value="impact">Impact</option>
                         <option value="arial">Arial</option>
+                        <option value="Trebuchet MS">Trebuchet</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Brush Script MT">Brush</option>
                     </select>
                     <label>
                         <img src="Icons/stroke.png">
