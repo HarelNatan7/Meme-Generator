@@ -29,7 +29,10 @@ const gImgs = [
 ]
 
 function onSearch(val) {
-console.log('val:', val)
+    gImgs.filter(img => {
+        img.keywords.includes(val)
+    })
+    return gImgs
 }
 
 function createMeme(img) {
