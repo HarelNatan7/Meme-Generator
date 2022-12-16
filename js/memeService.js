@@ -4,7 +4,7 @@ let gMeme
 let gCurrFontColor = 'white'
 let gCurrStrokeColor = 'black'
 let gCurrFontFamily = 'impact'
-let gCurrFontSize = 50
+let gCurrFontSize
 let gIdLine = 0
 
 const gImgs = [

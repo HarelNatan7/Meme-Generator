@@ -10,19 +10,23 @@
 </head>
 
 <body onload="onInIt()">
+    <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="page-header flex align-center space-between">
         <img class="logo" src="LOGO/LOGO.png" onclick="openGallery()">
-        <ul class="nav-bar flex">
-            <li><a href="index.html">Gallery</a></li>
-            <li><a href="myMemes.html">Memes</a></li>
-            <li><a href="about.html">About</a></li>
-            <li>
-                <select class="leng" onchange="onSetLang(this.value)">
-                    <option class="en" value="en">English</option>
-                    <option class="he" value="he">עברית</option>
-                </select>
-            </li>
-        </ul>
+        <nav class="main-nav">
+            <ul class="nav-bar flex">
+                <li><a href="index.html">Gallery</a></li>
+                <li><a href="myMemes.html">Memes</a></li>
+                <li><a href="about.html">About</a></li>
+                <!-- <li> -->
+                <!-- <select class="leng" onchange="onSetLang(this.value)"> -->
+                <!-- <option class="en" value="en">English</option> -->
+                <!-- <option class="he" value="he">עברית</option> -->
+                <!-- </select> -->
+                <!-- </li> -->
+            </ul>
+        </nav>
+        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
     <section class="gallery">
         <nav class="filters flex align-center justify-center space-around">
@@ -33,13 +37,13 @@
                 </button>
             </div>
         </nav>
-        <section class="memes-container flex">
+        <section class="memes-container flex align-center justify-center">
             <div class="meme-img-container">
                 <label>
-                    <img  class="meme-img" src="meme-imgs/input-img.png">
+                    <img class="meme-img" src="meme-imgs/input-img.png">
                     <input type="file" name="myfile" style="display:none" oninput="onImgInput(event)">
-                  </label>
-                  
+                </label>
+
             </div>
         </section>
     </section>

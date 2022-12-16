@@ -1,20 +1,113 @@
 /* Header */
 
-.page-header {
-    height: 15vh;
-    border-radius: 50px;
-    top: 0;
-    color: wheat;
-    width: 100%;
-    padding: 0 2rem;
-    background: linear-gradient(0.25turn, #4f89c0, #37a870);
-}
+/* .page-header { */
+    /* height: 15vh; */
+    /* border-radius: 50px; */
+    /* top: 0; */
+    /* color: wheat; */
+    /* width: 100%; */
+    /* padding: 0 2rem; */
+    /* background: linear-gradient(0.25turn, #4f89c0, #37a870); */
+/* } */
+
 .logo {
     height: 2rem;
     width: 10rem;
     cursor: pointer;
 }
+
 .nav-bar {
-    gap: 3rem;
     text-decoration: none;
+}
+
+@media (max-width: 590px) {
+    .page-header {
+        height: 7vh;
+        border-radius: 10px;
+        top: 0;
+        color: wheat;
+        width: 100%;
+        padding: 0 2vh;
+        background: linear-gradient(0.25turn, #4f89c0, #37a870);
+    }
+
+    .main-nav ul {
+        position: absolute;
+        /* transform: translateY(100%); */
+        /* bottom: 0; */
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        background: #29292900;
+        border-inline-start: 1px solid var(--clr0);
+        width: 100%;
+        justify-content: flex-end;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.6s, box-shadow 0.6s;
+        z-index: 3;
+    }
+    .nav-bar {
+        gap: 3vh;
+    }
+
+    body.menu-open .main-nav ul {
+        box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
+        max-height: 100vh;
+    }
+
+    .main-nav li:hover {
+        box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0 var(--clr1);
+    }
+
+    .main-nav li {
+        padding: 2rem 0;
+        border-bottom: 1.5px solid rgb(27, 25, 25);
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-screen {
+        position: fixed;
+        inset: 0;
+        background-color: #121212db;
+        /* display: none; */
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.6s;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    body.menu-open .main-screen {
+        pointer-events: auto;
+        /* display: block; */
+        opacity: 1;
+    }
+
+    .menu-toggle-btn {
+        background-color: inherit;
+        border: none;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 590px) {
+    .menu-toggle-btn {
+        display: none;
+    }
+    .page-header {
+        height: 15vh;
+        border-radius: 50px;
+        top: 0;
+        color: wheat;
+        width: 100%;
+        padding: 0 2rem;
+        background: linear-gradient(0.25turn, #4f89c0, #37a870);
+    }
+    .nav-bar {
+        gap: 7vh;
+    }
 }
