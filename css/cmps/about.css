@@ -1,0 +1,17 @@
+.about-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(129, 122, 113, 0.52);
+    border-radius: 25%;
+    padding: 2vh;
+    color: #c4c43e;
+}
+
+.me-img {
+    margin-left: 50px;
+    height: 22vh;
+    width: 22vh;
+    border-radius: 50%;
+}

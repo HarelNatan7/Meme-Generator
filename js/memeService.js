@@ -53,6 +53,8 @@ function createMeme(img) {
             }
         ]
     }
+    console.log('gElCanvas.width:', gElCanvas.width)
+    console.log('gCurrFontSize:', gCurrFontSize)
 }
 
 function setLineTxt(text) {

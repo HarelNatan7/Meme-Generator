@@ -10,17 +10,17 @@ function onInIt() {
     renderGallery()
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
-    // setgFontSize()
     resizeCanvas()
+    setgFontSize()
     addListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
     })
 }
 
-// function setgFontSize() {
-//     if (gElCanvas.width < 300) gCurrFontSize = 30
-// }
+function setgFontSize() {
+    if (gElCanvas.width < 300) gCurrFontSize = 30
+}
 
 function addListeners() {
     addMouseListeners()
