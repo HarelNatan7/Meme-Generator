@@ -1,14 +1,21 @@
 'use strict'
 
-function renderGallery() {
+function renderGallery(imgs = getImgs()) {
     let elGallery = document.querySelector('.memes-container')
-    let images = getImgs()
-    let strHTMLs = images.map(img =>
+    // let images = getImgs()
+    let ownMemeImg =
+        ` <div class="meme-img-container">
+        <label>
+        <img class="meme-img" src="meme-imgs/input-img.png">
+        <input type="file" name="myfile" style="display:none" oninput="onImgInput(event)">
+        </label>
+        </div>`
+    let strHTML = imgs.map(img =>
         `<div class="meme-img-container">
-    <img id="${img.id}" class="meme-img" src="${img.url}" onclick="renderMeme(this)">
-</div>`
+        <img id="${img.id}" class="meme-img" src="${img.url}" onclick="renderMeme(this)">
+        </div>`
     )
-    elGallery.innerHTML += strHTMLs.join('')
+    elGallery.innerHTML = ownMemeImg + strHTML.join('')
 }
 
 function openAbout() {

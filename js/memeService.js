@@ -29,10 +29,11 @@ const gImgs = [
 ]
 
 function onSearch(val) {
-    gImgs.filter(img => {
-        img.keywords.includes(val)
-    })
-    return gImgs
+    console.log('val:', val)
+    let filteredImgs = gImgs.filter(img => img.keywords.some(keyword => keyword.includes(val)))
+    // console.log('images:', images)
+    // return gImgs
+    renderGallery(filteredImgs)
 }
 
 function createMeme(img) {
