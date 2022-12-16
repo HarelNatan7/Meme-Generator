@@ -1,6 +1,7 @@
 /* Canvas */
 
 .canvas-container {
+    margin: 10px auto;
     height: 50vh;
     width: 50vh;
 }
@@ -11,7 +12,7 @@ canvas {
 
 @media (max-width: 590px) {
     .canvas-container {
-        margin: 10px auto;
+        
         height: 30vh;
         width: 30vh;
     }
@@ -20,3 +21,6 @@ canvas {
         width: 30vh;
     }
 }
+/* @media (min-width: 590px) { */
+
+/* } */

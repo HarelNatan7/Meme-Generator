@@ -17,7 +17,7 @@
             <ul class="nav-bar flex">
                 <li><a href="index.html">Gallery</a></li>
                 <li><a href="myMemes.html">Memes</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="#" onclick="openAbout()">About</a></li>
                 <!-- <li> -->
                 <!-- <select class="leng" onchange="onSetLang(this.value)"> -->
                 <!-- <option class="en" value="en">English</option> -->
@@ -28,6 +28,17 @@
         </nav>
         <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
+    <section class="about-container none">
+        <div class="header-container flex align-center justify-center">
+            <h1>About <br> Me</h1>
+            <img class="me-img" src="/Icons/Me.jpg">
+        </div>
+        <h3>My name is Harel Natan, Im a Full Stack Developer, <br>
+            I made this Meme Generator while doing The Coding <br>
+            Academy Bootcamp, Thats was my 2nd Sprint <br>
+            You Have here a nice Generator with some <br>
+            extra features than usuall, Enjoy 😎</h3>
+    </section>
     <section class="gallery">
         <nav class="filters flex align-center justify-center space-around">
             <div class="search-container">
@@ -49,7 +60,7 @@
     </section>
 
     <section class="editor none flex row align-center space-around">
-        <div class="canvas-container">
+        <div class="canvas-container flex justify-center">
             <canvas id="my-canvas" height="700" width="1077"></canvas>
         </div>
         <div class="edit-panel-container flex column space-between">

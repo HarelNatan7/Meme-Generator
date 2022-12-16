@@ -62,15 +62,15 @@
 }
 
 .switch-btn {
-    background-image: url('/Icons/blue.png');
+    background-image: url('./Icons/blue.png');
 }
 
 .add-btn {
-    background-image: url('/Icons/green.png');
+    background-image: url('./Icons/green.png');
 }
 
 .delete-btn {
-    background-image: url('/Icons/red.png');
+    background-image: url('./Icons/red.png');
 }
 
 #font {
@@ -104,13 +104,13 @@
 
 .dwn-a {
     display: inline-block;
-    background-image: url('/Icons/dwn-bgc.png');
+    background-image: url('./Icons/dwn-bgc.png');
     height: 51px;
     width: 213px;
 }
 
 .share-btn {
-    background-image: url('/Icons/share-bgc.png');
+    background-image: url('./Icons/share-bgc.png');
     height: 51px;
     width: 213px;
     background-repeat: round;

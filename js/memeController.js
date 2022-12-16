@@ -278,17 +278,19 @@ function renderCanvasAndRect() {
 }
 
 function openEditor() {
-    var elEditor = document.querySelector('.editor')
+    let elEditor = document.querySelector('.editor')
     elEditor.classList.remove('none')
-    var elEditor = document.querySelector('.gallery')
-    elEditor.classList.add('none')
+    let elGallery = document.querySelector('.gallery')
+    elGallery.classList.add('none')
 }
 
 function openGallery() {
-    var elEditor = document.querySelector('.editor')
+    let elEditor = document.querySelector('.editor')
     elEditor.classList.add('none')
-    var elEditor = document.querySelector('.gallery')
-    elEditor.classList.remove('none')
+    let elGallery = document.querySelector('.gallery')
+    elGallery.classList.remove('none')
+    let elAbout = document.querySelector('.about-container')
+    elAbout.classList.add('none').classList.add('none')
     gIdLine = 0
     gMeme = null
     document.querySelector('.text-input').value = ''
