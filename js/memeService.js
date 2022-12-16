@@ -28,6 +28,10 @@ const gImgs = [
     { id: 18, url: 'meme-imgs/18.jpg', keywords: ['smart', 'explain', 'history'] }
 ]
 
+function onSearch(val) {
+console.log('val:', val)
+}
+
 function createMeme(img) {
     let elCanvas = getElCanvas()
     gMeme = {
