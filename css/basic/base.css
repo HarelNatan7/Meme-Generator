@@ -25,10 +25,17 @@ a {
     transition: .2s;
 }
 
-a:hover {
+a:hover:not(.dwn-a) {
     color: green;
     background-color: wheat;
     padding: 0.7rem;
     border: 1px solid green;
     border-radius: 1.7rem;
+}
+
+@media (max-width: 590px) {
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
 }

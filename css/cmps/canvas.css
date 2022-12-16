@@ -8,3 +8,15 @@
 canvas {
     border-radius: 2rem;
 }
+
+@media (max-width: 590px) {
+    .canvas-container {
+        margin: 10px auto;
+        height: 30vh;
+        width: 30vh;
+    }
+    canvas {
+        height: 30vh;
+        width: 30vh;
+    }
+}

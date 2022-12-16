@@ -8,5 +8,5 @@ let strHTMLs = images.map(img =>
     <img id="${img.id}" class="meme-img" src="${img.url}" onclick="renderMeme(this)">
 </div>`
     )
-    elGallery.innerHTML = strHTMLs.join('')
+    elGallery.innerHTML += strHTMLs.join('')
 }

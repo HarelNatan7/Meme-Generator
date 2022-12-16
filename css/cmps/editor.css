@@ -101,3 +101,34 @@
 .sticker-container img:hover {
     transform: scale(1.1);
 }
+
+.dwn-a {
+    display: inline-block;
+    background-image: url('/Icons/dwn-bgc.png');
+    height: 51px;
+    width: 213px;
+}
+
+.share-btn {
+    background-image: url('/Icons/share-bgc.png');
+    height: 51px;
+    width: 213px;
+    background-repeat: round;
+    border-radius: 19px !important;
+}
+
+.dwn-a span {
+    position: relative;
+    top: 14px;
+}
+
+.dwn-a:hover,
+.share-btn:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 590px) {
+    .editor {
+        padding: 0.5rem;
+    }
+}

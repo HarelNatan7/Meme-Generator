@@ -12,6 +12,7 @@
 .logo {
     height: 2rem;
     width: 10rem;
+    cursor: pointer;
 }
 .nav-bar {
     gap: 3rem;

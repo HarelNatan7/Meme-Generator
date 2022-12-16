@@ -11,7 +11,7 @@
 
 <body onload="onInIt()">
     <header class="page-header flex align-center space-between">
-        <img class="logo" src="LOGO/LOGO.png" alt="">
+        <img class="logo" src="LOGO/LOGO.png" onclick="openGallery()">
         <ul class="nav-bar flex">
             <li><a href="index.html">Gallery</a></li>
             <li><a href="myMemes.html">Memes</a></li>
@@ -25,11 +25,26 @@
         </ul>
     </header>
     <section class="gallery">
-        <nav class="filters">Filters Container</nav>
-        <section class="memes-container flex"></section>
+        <nav class="filters flex align-center justify-center space-around">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search By Keyword">
+                <button class="search-btn">
+                    <img src="/Icons/search-btn.png">
+                </button>
+            </div>
+        </nav>
+        <section class="memes-container flex">
+            <div class="meme-img-container">
+                <label>
+                    <img  class="meme-img" src="meme-imgs/input-img.png">
+                    <input type="file" name="myfile" style="display:none" oninput="onImgInput(event)">
+                  </label>
+                  
+            </div>
+        </section>
     </section>
 
-    <section class="editor flex row align-center space-around">
+    <section class="editor none flex row align-center space-around">
         <div class="canvas-container">
             <canvas id="my-canvas" height="700" width="1077"></canvas>
         </div>
@@ -88,9 +103,14 @@
                 <img src="Stickers/shok.png">
                 <img src="Stickers/lazy.png">
             </div>
-            <div class="share-and-dwn-container">
-                <button>Share</button>
-                <button>Download</button>
+            <div class="share-and-dwn-container flex row align-center">
+                <button class="share-btn" onclick="onShare()">
+                    <img src="/Icons/share.png">
+                </button>
+                <a href="#" class="dwn-a" onclick="downloadCanvas(this)" download="my-img">
+                    <span>Download</span>
+                    <!-- <img src="/Icons/dwn.png"> -->
+                </a>
             </div>
         </div>
     </section>
