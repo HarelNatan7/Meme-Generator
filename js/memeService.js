@@ -31,8 +31,6 @@ const gImgs = [
 function onSearch(val) {
     console.log('val:', val)
     let filteredImgs = gImgs.filter(img => img.keywords.some(keyword => keyword.includes(val)))
-    // console.log('images:', images)
-    // return gImgs
     renderGallery(filteredImgs)
 }
 
@@ -61,8 +59,6 @@ function createMeme(img) {
             }
         ]
     }
-    console.log('gElCanvas.width:', gElCanvas.width)
-    console.log('gCurrFontSize:', gCurrFontSize)
 }
 
 function setLineTxt(text) {
