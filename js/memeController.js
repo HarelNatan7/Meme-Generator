@@ -17,30 +17,32 @@ function onInIt() {
     })
 }
 
-function setgFontSize() {
-    if (gElCanvas.width < 300) gCurrFontSize = 30
-    else gCurrFontSize = 50
+function renderMeme(selectedImg) {
+    openEditor()
+    let meme = getMeme()
+    if (!meme) resizeCanvas()
+    drawImg(selectedImg)
+    meme = getMeme()
+    if (!meme || !meme.lines.length) {
+        createMeme(selectedImg)
+        renderCanvas()
+        return
+    }
+    meme.lines.forEach((line, idx) => drawText(idx, true))
 }
 
-function addListeners() {
-    addMouseListeners()
-    addTouchListeners()
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+    setgFontSize()
+    renderCanvas()
 }
 
-function addMouseListeners() {
-    gElCanvas.addEventListener('click', onClick)
-    gElCanvas.addEventListener('mousemove', onMove)
-    gElCanvas.addEventListener('mousedown', onDown)
-    gElCanvas.addEventListener('mouseenter', onHover)
-    gElCanvas.addEventListener('mouseleave', onLeave)
-    gElCanvas.addEventListener('mouseup', onUp)
-}
-
-function addTouchListeners() {
-    gElCanvas.addEventListener('touch', onClick)
-    gElCanvas.addEventListener('touchmove', onMove)
-    gElCanvas.addEventListener('touchstart', onDown)
-    gElCanvas.addEventListener('touchend', onUp)
+function renderCanvas() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+    let meme = getMeme()
+    if (meme) renderMeme(meme.img)
 }
 
 function onClick(ev) {
@@ -78,6 +80,7 @@ function isLineClicked(ev) {
 function onHover() {
     gElCanvas.style.cursor = 'grab'
 }
+
 function onLeave() {
     gElCanvas.style.cursor = 'default'
 }
@@ -138,20 +141,6 @@ function getEvPos(ev) {
     return pos
 }
 
-function renderMeme(selectedImg) {
-    openEditor()
-    let meme = getMeme()
-    if (!meme) resizeCanvas()
-    drawImg(selectedImg)
-    meme = getMeme()
-    if (!meme || !meme.lines.length) {
-        createMeme(selectedImg)
-        renderCanvas()
-        return
-    }
-    meme.lines.forEach((line, idx) => drawText(idx, true))
-}
-
 function drawText(lineIdx, isPlaceHolder = false) {
     let meme = getMeme()
     let currLine = meme.lines[lineIdx]
@@ -185,20 +174,6 @@ function drawRect(currLine) {
 
 function drawImg(img) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-}
-
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
-    setgFontSize()
-    renderCanvas()
-}
-
-function renderCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-    let meme = getMeme()
-    if (meme) renderMeme(meme.img)
 }
 
 function onSwitchLine() {
@@ -262,6 +237,7 @@ function onSetFamily(val) {
     setFamily(val)
     renderCanvasAndRect()
 }
+
 function onSetAlign(val) {
     setAlign(val)
     renderCanvasAndRect()
@@ -275,6 +251,16 @@ function renderCanvasAndRect() {
     let meme = getMeme()
     renderCanvas()
     drawRect(meme.lines[meme.selectedLineIdx])
+}
+
+function onRndMeme() {
+    let imgs = getImgs()
+    let rndImgIdx = getRandomIntInclusive(1, imgs.length - 1)
+    let memeImg = imgs.find(img => img.id === rndImgIdx)
+    let img = `<img id="${memeImg.id}" class="meme-img" src="${memeImg.url}" onclick="renderMeme(this)">`
+    var div = document.createElement('div')
+    div.innerHTML = img.trim()
+    renderMeme(div.firstChild)
 }
 
 function openEditor() {
@@ -296,4 +282,33 @@ function openGallery() {
     document.querySelector('.text-input').value = ''
 }
 
+function setgFontSize() {
+    if (gElCanvas.width < 300) gCurrFontSize = 30
+    else gCurrFontSize = 50
+}
 
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('click', onClick)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseenter', onHover)
+    gElCanvas.addEventListener('mouseleave', onLeave)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touch', onClick)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onSaveMeme() {
+    let meme = gElCanvas.toDataURL('image/jpeg')
+    saveMemeToStorage(meme)
+}

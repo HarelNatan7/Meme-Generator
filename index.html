@@ -11,6 +11,7 @@
 
 <body onload="onInIt()">
     <div class="main-screen" onclick="toggleMenu()"></div>
+    <div class="rand-meme none"></div>
     <header class="page-header flex align-center space-between">
         <a href="index.html"><img class="logo" src="LOGO/LOGO.png"></a> 
         <nav class="main-nav">
@@ -44,8 +45,6 @@
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search By Keyword" oninput="onSearch(this.value)">
                 <img class="search-icon" src="Icons/search-btn.png">
-                <!-- <button class="search-btn"> -->
-                <!-- </button> -->
             </div>
             <div class="search-words-container flex row align-center">
                 <div id="celeb" onclick="onSearchByKeyword(this)">celeb</div>
@@ -54,13 +53,16 @@
                 <div id="pets" onclick="onSearchByKeyword(this)">pets</div>
                 <div id="angry" onclick="onSearchByKeyword(this)">angry</div>
             </div>
+            <div class="random-meme-container">
+                <button class="rnd-btn" onclick="onRndMeme()">Random Meme !</button>
+            </div>
         </nav>
         <section class="memes-container flex align-center justify-center">
            
         </section>
     </section>
 
-    <section class="editor none flex align-center space-around">
+    <section class="editor none flex align-center justify-center">
         <div class="canvas-container">
             <canvas id="my-canvas" height="700" width="1077"></canvas>
         </div>
@@ -124,12 +126,13 @@
                     <img src="./Icons/share.png">
                 </button>
                 <a href="#" class="dwn-a" onclick="downloadCanvas(this)" download="my-img">
-                    <span>Download</span>
-                    <!-- <img src="/Icons/dwn.png"> -->
+                    <img class="flex" src="/Icons/dwn.png">
                 </a>
+                <!-- <button class="save-btn" onclick="onSaveMeme()">Save</button> -->
             </div>
         </div>
     </section>
+    <script src="js/memeStorage.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>

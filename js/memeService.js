@@ -1,5 +1,6 @@
 'use strict'
 
+const MEMES = 'memes_DB'
 let gMeme
 let gCurrFontColor = 'white'
 let gCurrStrokeColor = 'black'
@@ -60,11 +61,6 @@ function createMeme(img) {
     }
 }
 
-function setLineTxt(text) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = text
-    drawText(gMeme.selectedLineIdx)
-}
-
 function addLine(isLines) {
     if (isLines) gIdLine = 0
     if (gMeme.lines.length === 1 && gMeme.lines[0].text === '') return
@@ -95,18 +91,6 @@ function changeLinesId(meme) {
     gIdLine = gMeme.lines.length
 }
 
-function getMeme() {
-    return gMeme
-}
-
-function getImgs() {
-    return gImgs
-}
-
-function getImg() {
-    return gImgs.find(img => gMeme.selectedImgId === img.id)
-}
-
 function onSearch(val) {
     val = val.toLowerCase()
     let filteredImgs = gImgs.filter(img => img.keywords.some(keyword => keyword.includes(val)))
@@ -116,6 +100,11 @@ function onSearch(val) {
 function onSearchByKeyword(val) {
     val = val.innerText
     onSearch(val)
+}
+
+function setLineTxt(text) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
+    drawText(gMeme.selectedLineIdx)
 }
 
 function setFontColor(val) {
@@ -163,6 +152,29 @@ function setAlign(val) {
             currLine.x = elCanvas.width - 50
             break
     }
+}
+
+function getMeme() {
+    return gMeme
+}
+
+function getImg() {
+    return gImgs.find(img => gMeme.selectedImgId === img.id)
+}
+
+function getImgs() {
+    return gImgs
+}
+
+function saveMemeToStorage(meme) {
+    let savedMemes = loadFromStorage(MEMES)
+    if (!savedMemes || savedMemes === null) {
+        savedMemes = [meme]
+        saveToStorage(MEMES, savedMemes)
+        return
+    }
+    savedMemes.push(meme)
+    saveToStorage(MEMES, savedMemes)
 }
 
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
