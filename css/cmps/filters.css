@@ -4,6 +4,7 @@
     /* background-color: #c4d1da6a; */
     background-color: #22252c;
     padding: 2vh;
+    flex-wrap: wrap;
 }
 
 .custom-file-upload {
@@ -35,4 +36,56 @@
     right: 10px;
     top: 50%;
     transform: translate(0, -50%);
+}
+
+.search-words-container {
+    background-color: #a3aab7a1;
+    color: #fff;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.459);
+    border-radius: 30px;
+}
+
+.search-words-container div {
+    margin: 0 7px;
+    padding: 7px;
+    text-transform: capitalize;
+    transition: .3s;
+    cursor: pointer;
+}
+.search-words-container div:hover {
+    scale: 1.3;
+}
+
+#celeb {
+    font-size: 30px;
+}
+#baby {
+    font-size: 20px;
+}
+#pets {
+    font-size: 30px;
+}
+#baby {
+    font-size: 25px;
+}
+
+@media (max-width: 850px) {
+    .search-words-container {
+        margin: 7px auto;
+    }
+    .search-words-container div {
+        padding: 3px;
+    }
+    #celeb {
+        font-size: 20px;
+    }
+    #baby {
+        font-size: 10px;
+    }
+    #pets {
+        font-size: 20px;
+    }
+    #baby {
+        font-size: 17px;
+    }
 }

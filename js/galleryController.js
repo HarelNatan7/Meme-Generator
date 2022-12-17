@@ -20,6 +20,7 @@ function renderGallery(imgs = getImgs()) {
 
 function openAbout() {
     document.querySelector('.about-container').classList.toggle('none')
+    document.body.classList.toggle('menu-open')
     document.querySelector('.editor').classList.add('none')
     document.querySelector('.gallery').classList.add('none')
 }

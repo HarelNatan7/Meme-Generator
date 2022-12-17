@@ -2,8 +2,8 @@
 
 .canvas-container {
     margin: 10px auto;
-    height: 50vh;
-    width: 50vh;
+    height: 67vh;
+    width: 67vh;
 }
 
 canvas {
@@ -12,13 +12,14 @@ canvas {
 
 @media (max-width: 590px) {
     .canvas-container {
-        
-        height: 30vh;
-        width: 30vh;
+        display: flex;
+        justify-content: center;
+        height: 45vh;
+        width: 45vh;
     }
     canvas {
-        height: 30vh;
-        width: 30vh;
+        height: 45vh;
+        width: 45vh;
     }
 }
 /* @media (min-width: 590px) { */

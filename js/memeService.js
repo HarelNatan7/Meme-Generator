@@ -113,6 +113,11 @@ function onSearch(val) {
     renderGallery(filteredImgs)
 }
 
+function onSearchByKeyword(val) {
+    val = val.innerText
+    onSearch(val)
+}
+
 function setFontColor(val) {
     gCurrFontColor = val
     let currLine = gMeme.lines[gMeme.selectedLineIdx]

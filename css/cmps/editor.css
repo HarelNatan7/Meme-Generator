@@ -6,7 +6,7 @@
 }
 
 .edit-panel-container {
-    height: 50vh;
+    height: 67vh;
     padding: 1rem;
     background-color: rgba(78, 81, 84, 0.53);
     border-radius: 1.7rem;
@@ -130,5 +130,26 @@
 @media (max-width: 590px) {
     .editor {
         padding: 0.5rem;
+    }
+    .row-selector button {
+        min-height: 40px;
+        min-width: 40px;
+    }
+    .text-editor button {
+        min-height: 40px;
+        min-width: 44px;
+    }
+    .text-inputs-container img {
+        height: 25px;
+    }
+    #font {
+        width: 203px;
+        height: 47px;
+    }
+    .dwn-a {
+        width: 167px;
+    }
+    .share-btn {
+        width: 176px;
     }
 }

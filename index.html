@@ -40,12 +40,19 @@
             extra features than usuall, Enjoy 😎</h3>
     </section>
     <section class="gallery">
-        <nav class="filters flex align-center justify-center space-around">
+        <nav class="filters flex row align-center justify-center space-around">
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search By Keyword" oninput="onSearch(this.value)">
                 <img class="search-icon" src="Icons/search-btn.png">
                 <!-- <button class="search-btn"> -->
                 <!-- </button> -->
+            </div>
+            <div class="search-words-container flex row align-center">
+                <div id="celeb" onclick="onSearchByKeyword(this)">celeb</div>
+                <div id="funny" onclick="onSearchByKeyword(this)">funny</div>
+                <div id="baby" onclick="onSearchByKeyword(this)">baby</div>
+                <div id="pets" onclick="onSearchByKeyword(this)">pets</div>
+                <div id="angry" onclick="onSearchByKeyword(this)">angry</div>
             </div>
         </nav>
         <section class="memes-container flex align-center justify-center">
@@ -53,8 +60,8 @@
         </section>
     </section>
 
-    <section class="editor none flex row align-center space-around">
-        <div class="canvas-container flex justify-center">
+    <section class="editor none flex align-center space-around">
+        <div class="canvas-container">
             <canvas id="my-canvas" height="700" width="1077"></canvas>
         </div>
         <div class="edit-panel-container flex column space-between">
